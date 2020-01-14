@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,97 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Pizza_Finder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="SQE-LM-73q">
+                                <rect key="frame" x="0.0" y="10" width="375" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5f-Gh-8ie">
+                                        <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Type"/>
+                                        <connections>
+                                            <action selector="changeMapType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZoD-Uq-q6B"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HqF-re-MwI">
+                                        <rect key="frame" x="81" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="3D"/>
+                                        <connections>
+                                            <action selector="changePitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dDC-Rj-bOe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfy-6L-usy">
+                                        <rect key="frame" x="158" y="0.0" width="60" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Features"/>
+                                        <connections>
+                                            <action selector="toggleMapFeatures:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dQn-4G-I1c"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m64-Zm-ByB">
+                                        <rect key="frame" x="265" y="0.0" width="33" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Here"/>
+                                        <connections>
+                                            <action selector="findHere:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eAP-fJ-gBq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZX-K3-cwf">
+                                        <rect key="frame" x="345" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Find"/>
+                                        <connections>
+                                            <action selector="findPizza:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OMA-Im-2XE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zZf-fM-THF">
+                                <rect key="frame" x="0.0" y="616" width="375" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="Leeds"/>
+                                    <segment title="Manc"/>
+                                    <segment title="Liverpool"/>
+                                    <segment title="York"/>
+                                    <segment title="Sheffield"/>
+                                </segments>
+                                <connections>
+                                    <action selector="locationPicker:" destination="BYZ-38-t0r" eventType="valueChanged" id="leq-EZ-097"/>
+                                </connections>
+                            </segmentedControl>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" translatesAutoresizingMaskIntoConstraints="NO" id="fgC-XE-88u">
+                                <rect key="frame" x="0.0" y="48" width="375" height="560"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.36056949540755046" green="0.88489022633907566" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fgC-XE-88u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Anf-k5-SC1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fgC-XE-88u" secondAttribute="trailing" id="GSG-xO-BH7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zZf-fM-THF" secondAttribute="bottom" constant="20" id="Ttz-wW-aku"/>
+                            <constraint firstItem="zZf-fM-THF" firstAttribute="leading" secondItem="SQE-LM-73q" secondAttribute="leading" id="VSq-yi-Lfg"/>
+                            <constraint firstItem="SQE-LM-73q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="WeG-UL-xgq"/>
+                            <constraint firstItem="zZf-fM-THF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dey-jA-hkM"/>
+                            <constraint firstItem="zZf-fM-THF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ohk-Qd-C2D"/>
+                            <constraint firstItem="zZf-fM-THF" firstAttribute="top" secondItem="fgC-XE-88u" secondAttribute="bottom" constant="8" id="tIC-Lv-xID"/>
+                            <constraint firstItem="fgC-XE-88u" firstAttribute="top" secondItem="SQE-LM-73q" secondAttribute="bottom" constant="8" id="twU-aB-Ujk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="changeMapType" destination="E5f-Gh-8ie" id="KKd-Hr-xHJ"/>
+                        <outlet property="changePitch" destination="HqF-re-MwI" id="W3u-PH-v4W"/>
+                        <outlet property="mapView" destination="fgC-XE-88u" id="r9S-vH-x6W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="132" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>

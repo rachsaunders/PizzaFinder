@@ -13,10 +13,11 @@
 		180C24EE23CB48B10032081B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180C24EC23CB48B10032081B /* Main.storyboard */; };
 		180C24F023CB48B60032081B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180C24EF23CB48B60032081B /* Assets.xcassets */; };
 		180C24F323CB48B60032081B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180C24F123CB48B60032081B /* LaunchScreen.storyboard */; };
+		180C24FB23CB50100032081B /* PizzaAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C24FA23CB50100032081B /* PizzaAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		180C24E323CB48B10032081B /* PizzaFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		180C24E323CB48B10032081B /* Pizza Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pizza Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		180C24E623CB48B10032081B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180C24E823CB48B10032081B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		180C24EA23CB48B10032081B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +25,7 @@
 		180C24EF23CB48B60032081B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		180C24F223CB48B60032081B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		180C24F423CB48B60032081B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		180C24FA23CB50100032081B /* PizzaAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +50,7 @@
 		180C24E423CB48B10032081B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				180C24E323CB48B10032081B /* PizzaFinder.app */,
+				180C24E323CB48B10032081B /* Pizza Finder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,8 +58,9 @@
 		180C24E523CB48B10032081B /* PizzaFinder */ = {
 			isa = PBXGroup;
 			children = (
-				180C24E623CB48B10032081B /* AppDelegate.swift */,
+				180C24FA23CB50100032081B /* PizzaAnnotation.swift */,
 				180C24E823CB48B10032081B /* SceneDelegate.swift */,
+				180C24E623CB48B10032081B /* AppDelegate.swift */,
 				180C24EA23CB48B10032081B /* ViewController.swift */,
 				180C24EC23CB48B10032081B /* Main.storyboard */,
 				180C24EF23CB48B60032081B /* Assets.xcassets */,
@@ -84,7 +87,7 @@
 			);
 			name = PizzaFinder;
 			productName = PizzaFinder;
-			productReference = 180C24E323CB48B10032081B /* PizzaFinder.app */;
+			productReference = 180C24E323CB48B10032081B /* Pizza Finder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				180C24EB23CB48B10032081B /* ViewController.swift in Sources */,
+				180C24FB23CB50100032081B /* PizzaAnnotation.swift in Sources */,
 				180C24E723CB48B10032081B /* AppDelegate.swift in Sources */,
 				180C24E923CB48B10032081B /* SceneDelegate.swift in Sources */,
 			);
@@ -292,7 +296,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rachelsaunders.PizzaFinder;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Pizza Finder";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -310,7 +314,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rachelsaunders.PizzaFinder;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Pizza Finder";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
