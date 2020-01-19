@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
     
     var coordinate2D = CLLocationCoordinate2DMake(53.807543, -1.548784)
     
@@ -72,15 +72,15 @@ class ViewController: UIViewController {
     
     @IBAction func locationPicker(_ sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
-        mapView.removeAnnotations(mapView.annotations)
+        // mapView.removeAnnotations(mapView.annotations)
         switch index {
         case 0: // Leeds
             coordinate2D = CLLocationCoordinate2DMake(53.807543, -1.548784)
         case 1: // Manchester
             coordinate2D = CLLocationCoordinate2DMake(53.485506, -2.240287)
             updateMapCamera(heading: 245, altitude: 250)
-            let pizzaPin = PizzaAnnotation(coordinate: coordinate2D, title: "Manchester Pizza!", subtitle: "Pizza comes to Manc!")
-            mapView.addAnnotation(pizzaPin)
+          //  let pizzaPin = PizzaAnnotation(coordinate: coordinate2D, title: "Manchester Pizza!", subtitle: "Pizza comes to Manc!")
+           // mapView.addAnnotation(pizzaPin)
             return
         case 2: // Liverpool
             coordinate2D = CLLocationCoordinate2DMake(053.408269, -2.989188)
@@ -96,7 +96,7 @@ class ViewController: UIViewController {
             pizzaPin.coordinate = coordinate2D
             pizzaPin.title = "Sheffield Pizza"
             pizzaPin.subtitle = "Also known as Sheffield Pizza"
-            mapView.addAnnotation(pizzaPin)
+           // mapView.addAnnotation(pizzaPin)
         default:
             coordinate2D = CLLocationCoordinate2DMake(53.807543, -1.548784)
         }
@@ -123,7 +123,34 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
+        mapView.addAnnotations(PizzaHistoryAnnotations().annotations)
         updateMapRegion(rangeSpan: 100)
+    }
+    
+     //MARK:- ANNOTATIONS
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var annotationView = MKAnnotationView()
+        guard let annotation = annotation as? PizzaAnnotation
+            else{
+                return nil
+        }
+        if let dequedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation.identifier) {
+            annotationView = dequedView
+        } else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
+        }
+        // annotationView.pinTintColor = UIColor.blue
+        annotationView.image = UIImage(named: "pizza pin")
+        annotationView.canShowCallout = true
+        let paragraph = UILabel()
+        paragraph.numberOfLines = 0
+        paragraph.font = UIFont.preferredFont(forTextStyle: .caption1)
+        paragraph.text = annotation.informationText
+        annotationView.detailCalloutAccessoryView = paragraph
+        annotationView.leftCalloutAccessoryView = UIImageView(image: annotation.pizzaPhoto)
+        return annotationView
     }
 
 
