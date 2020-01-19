@@ -74,7 +74,7 @@
                                     <action selector="locationPicker:" destination="BYZ-38-t0r" eventType="valueChanged" id="leq-EZ-097"/>
                                 </connections>
                             </segmentedControl>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fgC-XE-88u">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsBuildings="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgC-XE-88u">
                                 <rect key="frame" x="0.0" y="48" width="375" height="560"/>
                             </mapView>
                         </subviews>
