@@ -55,10 +55,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func toggleMapFeatures(_ sender: UIButton) {
-       // mapView.showsBuildings = isOn
-       // isOn = !isOn
-      //  isOn = !mapView.showsPointsOfInterest
-       // mapView.showsPointsOfInterest = isOn
+        mapView.showsBuildings = isOn
+        isOn = !isOn
+        mapView.pointOfInterestFilter = isOn ? MKPointOfInterestFilter.includingAll : MKPointOfInterestFilter.excludingAll
         mapView.showsScale = isOn
         mapView.showsCompass = isOn
         mapView.showsTraffic = isOn
@@ -84,7 +83,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             return
         case 2: // Liverpool
             coordinate2D = CLLocationCoordinate2DMake(053.408269, -2.989188)
-            updateMapCamera(heading: 12.0, altitude: 700)
+            updateMapCamera(heading: 0, altitude: 15000)
             return
         case 3: // York
             coordinate2D = CLLocationCoordinate2DMake(53.960394, -1.087460)
@@ -97,6 +96,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
             pizzaPin.title = "Sheffield Pizza"
             pizzaPin.subtitle = "Also known as Sheffield Pizza"
            // mapView.addAnnotation(pizzaPin)
+            updateMapCamera(heading: 0, altitude: 10000)
+            return
         default:
             coordinate2D = CLLocationCoordinate2DMake(53.807543, -1.548784)
         }
@@ -119,12 +120,24 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    func addDeliveryOverlay(){
+       // let radius = 1600.0
+        for location in mapView.annotations{
+            if let radius = (location as! PizzaAnnotation).deliveryRadius{
+            let circle = MKCircle(center: location.coordinate, radius: radius)
+            // add was renamed to addOverlay FYI
+                mapView.addOverlay(circle)
+            }
+        }
+    }
+    
     //MARK:- OVERRIDE FUNC VIEWDIDLOAD
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         mapView.addAnnotations(PizzaHistoryAnnotations().annotations)
+        addDeliveryOverlay()
         updateMapRegion(rangeSpan: 100)
     }
     
@@ -147,10 +160,30 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let paragraph = UILabel()
         paragraph.numberOfLines = 0
         paragraph.font = UIFont.preferredFont(forTextStyle: .caption1)
-        paragraph.text = annotation.informationText
+        paragraph.text = annotation.subtitle
+        paragraph.numberOfLines = 1
+        paragraph.adjustsFontSizeToFitWidth = true
         annotationView.detailCalloutAccessoryView = paragraph
         annotationView.leftCalloutAccessoryView = UIImageView(image: annotation.pizzaPhoto)
+        annotationView.rightCalloutAccessoryView = UIButton(type: .infoLight)
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let vc = AnnotationDetailViewController(nibName: "AnnotationDetailViewController", bundle: nil)
+        vc.annotation = view.annotation as! PizzaAnnotation
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let circle = overlay as? MKCircle {
+            let circleRenderer = MKCircleRenderer(circle: circle)
+            circleRenderer.fillColor = UIColor(red: 0.0, green: 0.1, blue: 1.0, alpha: 0.1)
+            circleRenderer.strokeColor = UIColor.blue
+            circleRenderer.lineWidth = 1.0
+            return circleRenderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
     }
 
 
